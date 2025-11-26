@@ -1,0 +1,42 @@
+  #aichat {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      width: 320px;
+      height: 420px;
+      border: 1px solid #ddd;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      font-family: system-ui;
+      display: flex;
+      flex-direction: column;
+    }
+    #aichat_header {
+      padding: 10px;
+      font-weight: 600;
+      border-bottom: 1px solid #eee;
+      background: #f7f7f7;
+    }
+    #aichat_log {
+      padding: 8px;
+      overflow-y: auto;
+      flex: 1;
+    }
+    #aichat_inputbar {
+      display: flex;
+      padding: 8px;
+      border-top: 1px solid #eee;
+    }
+    #aichat_input {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+    #aichat_send {
+      margin-left: 8px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
