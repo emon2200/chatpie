@@ -20,11 +20,18 @@ rad.json
 *.flf
 #Test results file
 <<<<<<< HEAD
+<<<<<<< HEAD
 TestResults.xml
 =======
+=======
+>>>>>>> fa69656b4b4147fb233c9d27571c2eb92cd464ce
 TestResults.xml
 
 __pycache__/
 .pyc
+<<<<<<< HEAD
 .env
 >>>>>>> fa69656 (Initial commit)
+=======
+.env
+>>>>>>> fa69656b4b4147fb233c9d27571c2eb92cd464ce

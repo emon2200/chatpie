@@ -57,7 +57,10 @@ MIDDLEWARE = [
         'whitenoise.middleware.WhiteNoiseMiddleware',
   
 ]
+<<<<<<< HEAD
 ALLOWED_HOSTS = ["*"] 
+=======
+>>>>>>> fa69656b4b4147fb233c9d27571c2eb92cd464ce
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_HEADERS = [
         "x-api-key",
