@@ -19,4 +19,12 @@ rad.json
 #License-file
 *.flf
 #Test results file
+<<<<<<< HEAD
 TestResults.xml
+=======
+TestResults.xml
+
+__pycache__/
+.pyc
+.env
+>>>>>>> fa69656 (Initial commit)

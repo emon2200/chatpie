@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Hospital Chat Widget</title>
+  {% load static %}
+   <link rel="stylesheet" href="{%  static 'css/chat.css' %}">
+</head>
+<body>
+  <div id="aichat">
+    <div id="aichat_header">🏥 Hospital Support</div>
+    <div id="aichat_log"></div>
+    <div id="aichat_inputbar">
+      <input id="aichat_input" placeholder="Type your message..."/>
+      <button id="aichat_send">Send</button>
+    </div>
+  </div>
+
+<script>
+(function(){
+  const API_URL = "http://127.0.0.1:8000/api/chat/"; // Django API
+  const API_KEY = "{{ api_key }}"; // backend থেকে পাঠানো হবে
+
+  function log(who, text){
+    const el = document.createElement('div');
+    el.style.margin = '6px 0';
+    el.innerHTML = `<div style="font-size:12px;color:#666">${who}</div><div>${text}</div>`;
+    const logEl = document.getElementById('aichat_log');
+    logEl.appendChild(el);
+    logEl.scrollTop = logEl.scrollHeight;
+  }
+
+  async function sendMessage(msg){
+    try {
+      const res = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type':'application/json',
+          'X-API-KEY': API_KEY
+        },
+        body: JSON.stringify({message: msg})
+      });
+      if(!res.ok) throw new Error(`Status ${res.status}`);
+      const data = await res.json();
+      log('Bot', data.reply_html || '⚠️ No response');
+    } catch(e){
+      log('Bot', '⚠️ Error contacting server: '+e.message);
+    }
+  }
+
+  document.getElementById('aichat_send').onclick = function(){
+    const msg = document.getElementById('aichat_input').value.trim();
+    if(!msg) return;
+    log('You', msg);
+    document.getElementById('aichat_input').value = '';
+    sendMessage(msg);
+  };
+
+  document.getElementById('aichat_input').addEventListener('keypress', function(e){
+    if(e.key === 'Enter') document.getElementById('aichat_send').click();
+  });
+})();
+</script>
+</body>
+</html>
