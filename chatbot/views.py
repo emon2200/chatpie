@@ -11,8 +11,8 @@ openai.api_key = os.getenv("openai_api")
 @api_view(['POST'])
 def chatbot_api(request):
     # ১. Tenant validate
-    api_key = request.headers.get("X-API-KEY", "").strip()  # strip removes extra spaces
-    print("DEBUG: Received X-API-KEY =", repr(api_key))
+    api_key = request.headers.get("X-API-KEY", "")# strip removes extra spaces
+    print("DEBUG: Received X-API-KEY =", api_key)
 
 
     try:
