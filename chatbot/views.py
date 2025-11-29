@@ -28,8 +28,10 @@ def chatbot_api(request):
             resp = requests.get(api_url, timeout=5)
             if resp.status_code == 200:
                 hospital_data[api_url] = resp.json()
+                print("DEBUG: HOSPITAL_DATA =", hospital_data)
             else:
                 hospital_data[api_url] = {"error": f"Status {resp.status_code}"}
+                
         except Exception as e:
             hospital_data[api_url] = {"error": str(e)}
 
@@ -38,7 +40,6 @@ def chatbot_api(request):
 You are a hospital support AI assistant for {tenant.name}.
 User asked: "{user_msg}".
 Here is all available hospital data from APIs: {hospital_data}.
-
 Reply in short, helpful sentences with proper analysis and give suggestion to user. 
 Do NOT include ** in your response.  answer in english or bangla language always .
 Use HTML <br> line breaks and emojis where relevant.
